@@ -71,6 +71,9 @@ struct MyArgs {
 
     /// Second image
     img2: String,
+
+    /// Output path
+    output: String,
 }
 
 fn main() -> Result<(), ()> {
@@ -110,7 +113,7 @@ fn main() -> Result<(), ()> {
 
     // Only resize the width. Don't constrain by height.
     canvas = canvas.resize(args.width, u32::MAX, FilterType::Lanczos3);
-    canvas.save("output.jpg").unwrap();
+    canvas.save(&args.output).unwrap();
 
     Ok(())
 }
